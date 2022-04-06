@@ -5,19 +5,15 @@ from pyrogram.types import (
   InlineKeyboardMarkup,
 )
 
-from config import(
-     GROUP_SUPPORT,
-     UPDATES_CHANNEL,
- )
 
 def stream_markup(user_id):
   buttons = [
     [
       InlineKeyboardButton(
-             "🔰 Group ", url=f"https://t.me/{GROUP_SUPPORT}"
+             "🔰 Group ", url=f"https://t.me/AkihiroSupport"
          ),
       InlineKeyboardButton(
-             "📣 Channel ", url=f"https://t.me/{UPDATES_CHANNEL}"
+             "📣 Channel ", url=f"https://t.me/AkihiroUpdate"
          ),
       InlineKeyboardButton(text="⚙️ Menu ", callback_data=f'stream_menu_panel | {user_id}'),
       InlineKeyboardButton(text="❌ Close ", callback_data=f'set_close'),
