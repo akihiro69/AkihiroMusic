@@ -5,6 +5,10 @@ from pyrogram.types import (
   InlineKeyboardMarkup,
 )
 
+from config import(
+     GROUP_SUPPORT,
+     UPDATES_CHANNEL,
+ )
 
 def stream_markup(user_id):
   buttons = [
