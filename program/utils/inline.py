@@ -9,13 +9,13 @@ from pyrogram.types import (
 def stream_markup(user_id):
   buttons = [
     [
-      InlineKeyboardButton(
-             "🔰 Group ", url=f"https://t.me/AkihiroSupport"
-         ),
-      InlineKeyboardButton(
-             "📣 Channel ", url=f"https://t.me/AkihiroUpdate"
-         ),
+      InlineKeyboardButton("🔰 Group ", url=f"https://t.me/AkihiroSupport"),
+      InlineKeyboardButton("📣 Channel ", url=f"https://t.me/AkihiroUpdate"),
+    ],
+    [
       InlineKeyboardButton(text="⚙️ Menu ", callback_data=f'stream_menu_panel | {user_id}'),
+    ],
+    [
       InlineKeyboardButton(text="❌ Close ", callback_data=f'set_close'),
     ],
   ]
