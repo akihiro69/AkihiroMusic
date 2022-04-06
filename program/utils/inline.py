@@ -14,8 +14,6 @@ def stream_markup(user_id):
     ],
     [
       InlineKeyboardButton(text="⚙️ Menu ", callback_data=f'stream_menu_panel | {user_id}'),
-    ],
-    [
       InlineKeyboardButton(text="❌ Close ", callback_data=f'set_close'),
     ],
   ]
