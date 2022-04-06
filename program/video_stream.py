@@ -497,10 +497,15 @@ async def vstream(c: Client, m: Message):
         else:
             pass
 
-        regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
-        match = re.match(regex, url)
-
-        if match:
+        m3u8_regex = r"^(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#,?&*//=]*)(.m3u8)\b([-a-zA-Z0-9@:%_\+.~#,?&//=]*))"
+        a_match = re.match(m3u8_regex, url)
+        
+        ytdl_regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
+        b_match = re.match(ytdl_regex, url)
+        
+        if a_match:
+            api, livelink = await ytdl(url)
+        elif b_match:
             api, livelink = await ytdl(url)
         else:
             livelink = url
@@ -509,8 +514,7 @@ async def vstream(c: Client, m: Message):
         if api == 0:
             await loser.edit(f"❌ yt-dl issues detected\n\n» `{livelink}`")
         else:
-            search = ytsearch(url)
-            if "m3u8" in url:
+            if "m3u8" or "m3u" in url:
                 if chat_id in QUEUE:
                     await loser.edit("🔄 Queueing Track...")
                     pos = add_to_queue(chat_id, "m3u8 video", livelink, url, "video", Q)
@@ -520,7 +524,7 @@ async def vstream(c: Client, m: Message):
                     await m.reply_photo(
                         photo=f"{IMG_1}",
                         reply_markup=InlineKeyboardMarkup(buttons),
-                        caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [m3u8 video]({url}) | `live`\n🧸 **Requested by:** {requester}",
+                        caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [m3u8 video stream]({url}) | `live`\n🧸 **Requested by:** {requester}",
                     )
                 else:
                     if Q == 720:
@@ -549,7 +553,7 @@ async def vstream(c: Client, m: Message):
                         await m.reply_photo(
                             photo=f"{IMG_2}",
                             reply_markup=InlineKeyboardMarkup(buttons),
-                            caption=f"🗂 **Name:** [m3u8 video]({url}) | `live`\n🧸 **Requested by:** {requester}",
+                            caption=f"🗂 **Name:** [m3u8 video stream]({url}) | `live`\n🧸 **Requested by:** {requester}",
                         )
                     except (NoActiveGroupCall, GroupCallNotFound):
                         await loser.delete()
@@ -564,6 +568,7 @@ async def vstream(c: Client, m: Message):
                         await remove_active_chat(chat_id)
                         await m.reply_text("❌ The content you provide to play has no audio source")
             else:
+                search = ytsearch(url)
                 title = search[0]
                 songname = search[0]
                 thumbnail = search[3]
