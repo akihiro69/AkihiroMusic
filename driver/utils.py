@@ -26,8 +26,8 @@ from pytgcalls.types.stream import StreamAudioEnded
 keyboard = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton(text="• Mᴇɴᴜ", callback_data="stream_menu_panel"),
-            InlineKeyboardButton(text="• Cʟᴏsᴇ", callback_data="set_close"),
+            InlineKeyboardButton("🔰 Group", url=f"https://t.me/AkihiroSupport"),
+            InlineKeyboardButton("📣 Channel", url=f"https://t.me/AkihiroUpdate"),
         ]
     ]
 )
