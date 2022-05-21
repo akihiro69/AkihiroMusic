@@ -1,18 +1,27 @@
 version: "3.10"
 services:
-  veez:
+  worker:
     build: .
     environment:
-      api_id: $api_id
-      api_hash: $api_hash
-      token: $token
-      session: $session
-      creator_id: $creator_id
-      creator_name: $creator_name
-      creator_username: $creator_username
-      database_url: $database_url
-      sudoers_id: $sudoers_id
-      cmd_handler: $cmd_handler
-      support_group: $support_group
-      support_channel: $support_channel
-      bot_alive_image: $bot_alive_image
+      SESSION_NAME: $SESSION_NAME
+      API_ID: $API_ID
+      API_HASH: $API_HASH
+      MONGODB_URL: $MONGODB_URL
+      LOG_GROUP_ID: $LOG_GROUP_ID
+      OWNER_ID: $OWNER_ID
+      DURATION_LIMIT: $DURATION_LIMIT
+      SUDO_USERS: $SUDO_USERS
+      COMMAND_PREFIXES: $COMMAND_PREFIXES
+      OWNER_USERNAME: $OWNER_USERNAME
+      ALIVE_NAME: $ALIVE_NAME
+      BOT_USERNAME: $BOT_USERNAME
+      UPSTREAM_REPO: $UPSTREAM_REPO
+      UPSTREAM_BRANCH: $UPSTREAM_BRANCH
+      GROUP_SUPPORT: $GROUP_SUPPORT
+      UPDATES_CHANNEL: $UPDATES_CHANNEL
+      IMG_1: $IMG_1
+      IMG_2: $IMG_2
+      IMG_3: $IMG_3
+      IMG_4: $IMG_4
+      IMG_5: $IMG_5
+      ALIVE_IMG: $ALIVE_IMG
