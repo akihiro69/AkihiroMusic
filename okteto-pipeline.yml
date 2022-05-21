@@ -1,5 +1,6 @@
-icon: https://img.shields.io/github/v/release/levina-lab/VeezStreamBot?color=black&logo=github&logoColor=black&style=social
 deploy:
-  ---build -f docker-compose.yml
+  compose:
+     - docker-compose.yml
+     - docker-compose-dev.yml
      
 # vars: [{"name": "BRANCH", "value": "insider"}]
