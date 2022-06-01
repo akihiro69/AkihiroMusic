@@ -60,7 +60,7 @@ Read the [Docs](https://levina.gitbook.io/videostreambot/deployment/requirements
 > Checkout the [Docs](https://levina.gitbook.io/videostreambot/deployment/local-hosting-or-vps) for Detailed Explanation on VPS Deployment
 
 ```console
-root@linux~ $ git clone https://github.com/levina-lab/video-stream
+root@linux~ $ git clone https://github.com/akihiro69/AkihiroMusic
 root@linux~ $ cd video-stream
 root@linux~ $ pip3 install -U -r requirements.txt
 root@linux~ $ cp example.env .env
